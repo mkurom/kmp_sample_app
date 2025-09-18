@@ -45,7 +45,8 @@ import org.jetbrains.compose.resources.DrawableResource
 @Preview
 fun App(
     countries: List<Country> = defaultCountries,
-    onNavigateToSwiftUI: (() -> Unit)? = null
+    onNavigateToSwiftUI: (() -> Unit)? = null,
+    onNavigateToNative: (() -> Unit)? = null
 ) {
     MaterialTheme {
         var showCountries by remember { mutableStateOf(false) }
@@ -110,6 +111,16 @@ fun App(
                     modifier = Modifier.padding(start = 20.dp, top = 10.dp)
                 ) {
                     Text("Open SwiftUI Screen")
+                }
+            }
+            
+            // Android Native画面への遷移ボタン
+            onNavigateToNative?.let { navigate ->
+                Button(
+                    onClick = navigate,
+                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
+                ) {
+                    Text("Open Android Native Screen")
                 }
             }
         }

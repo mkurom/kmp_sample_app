@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      run_tests:
+        description: 'Run tests'
+        required: true
+        default: true
+        type: boolean
+      run_lint:
+        description: 'Run lint checks'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || inputs.run_tests }}
+    
+    steps:
+    - name: Setup KMP Environment
+      uses: ./.github/actions/setup-kmp
+      
+    - name: Run common tests
+      run: ./gradlew :composeApp:allTests
+      
+    - name: Run Android unit tests
+      run: ./gradlew :composeApp:testDebugUnitTest
+      
+    - name: Run iOS unit tests
+      run: ./gradlew :composeApp:iosTest
+
+  lint:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request' || inputs.run_lint }}
+    
+    steps:
+    - name: Setup KMP Environment
+      uses: ./.github/actions/setup-kmp
+      
+    - name: Run ktlint check
+      run: ./gradlew ktlintCheck
+      continue-on-error: true
+      
+    - name: Check code formatting
+      run: ./gradlew ktlintFormat
+      continue-on-error: true

@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      build_android:
+        description: 'Build Android APK'
+        required: true
+        default: true
+        type: boolean
+      build_ios:
+        description: 'Build iOS Framework'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  build:
+    name: Build Release Artifacts
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Setup KMP Environment
+      uses: ./.github/actions/setup-kmp
+      
+    - name: Build Android Release APK
+      if: ${{ github.event_name == 'push' || inputs.build_android }}
+      run: ./gradlew :composeApp:assembleRelease
+      
+    - name: Build iOS Release Framework
+      if: ${{ github.event_name == 'push' || inputs.build_ios }}
+      run: ./gradlew :composeApp:linkReleaseFrameworkIosArm64 :composeApp:linkReleaseFrameworkIosSimulatorArm64
+      
+    - name: Upload Android APK
+      if: ${{ github.event_name == 'push' || inputs.build_android }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-release-apk
+        path: composeApp/build/outputs/apk/release/*.apk
+        retention-days: 30
+        
+    - name: Upload iOS Framework
+      if: ${{ github.event_name == 'push' || inputs.build_ios }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ios-release-framework
+        path: composeApp/build/xcode-frameworks/Release/
+        retention-days: 30

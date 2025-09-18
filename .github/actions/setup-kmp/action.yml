@@ -19,6 +19,28 @@ runs:
         restore-keys: |
           ${{ runner.os }}-gradle-
           
+    - name: Cache Kotlin/Native compilation
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin
+          ~/.konan
+          composeApp/build/classes/kotlin
+        key: ${{ runner.os }}-kotlin-native-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-kotlin-native-
+          
+    - name: Cache Android build
+      uses: actions/cache@v4
+      with:
+        path: |
+          composeApp/build/intermediates
+          composeApp/build/tmp
+          composeApp/build/generated
+        key: ${{ runner.os }}-android-build-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties', 'composeApp/src/**') }}
+        restore-keys: |
+          ${{ runner.os }}-android-build-
+          
     - name: Grant execute permission for gradlew
       shell: bash
       run: chmod +x gradlew

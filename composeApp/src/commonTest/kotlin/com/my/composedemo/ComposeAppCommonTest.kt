@@ -13,7 +13,7 @@ class ComposeAppCommonTest {
     
     @Test
     fun testPlatformName() {
-        val platform = Platform()
+        val platform = getPlatform()
         val platformName = platform.name
         assertTrue(platformName.isNotEmpty(), "Platform name should not be empty")
     }

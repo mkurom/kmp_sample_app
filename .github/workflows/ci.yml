@@ -38,7 +38,7 @@ jobs:
       run: ./gradlew :composeApp:testDebugUnitTest
       
     - name: Run iOS unit tests
-      run: ./gradlew :composeApp:iosTest
+      run: ./gradlew :composeApp:iosSimulatorArm64Test
 
   lint:
     name: Code Quality Checks

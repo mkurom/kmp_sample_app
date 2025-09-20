@@ -48,84 +48,36 @@ fun App(
     onNavigateToSwiftUI: (() -> Unit)? = null,
     onNavigateToNative: (() -> Unit)? = null
 ) {
+    var appState by remember { mutableStateOf(AppState.SPLASH) }
+    val navigationState = remember { NavigationState() }
+    
     MaterialTheme {
-        var showCountries by remember { mutableStateOf(false) }
-        var timeAtLocation by remember { mutableStateOf("No location selected") }
-
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .padding(20.dp)
-                .safeContentPadding()
-                .fillMaxSize(),
-        ) {
-            Text(
-                timeAtLocation,
-                style = TextStyle(fontSize = 20.sp),
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().align(Alignment.CenterHorizontally)
-            )
-            Row(
-                modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-            ) {
-                DropdownMenu(
-                    expanded = showCountries,
-                    onDismissRequest = { showCountries = false }
-                ) {
-                    countries.forEach { (name, zone, image) ->
-                        DropdownMenuItem(
-                            text = {
-                                Row (
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Image(
-                                        painterResource(image),
-                                        modifier = Modifier.size(50.dp).padding(end = 10.dp),
-                                        contentDescription = "$name flag"
-                                    )
-                                    Text(name)
-                                }
-                            },
-                            onClick = {
-                                timeAtLocation = currentTimeAt(name, zone)
-                                showCountries = false
-                            }
-                        )
+        when (appState) {
+            AppState.SPLASH -> {
+                SplashScreen(
+                    onNavigateToHome = {
+                        appState = AppState.HOME
                     }
-                }
+                )
             }
-
-            Button(
-                onClick = {
-                    showCountries = !showCountries
-                },
-                modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-            ) {
-                Text("Select Location")
-            }
-            
-            // SwiftUI画面への遷移ボタン
-            onNavigateToSwiftUI?.let { navigate ->
-                Button(
-                    onClick = navigate,
-                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-                ) {
-                    Text("Open SwiftUI Screen")
-                }
-            }
-            
-            // Android Native画面への遷移ボタン
-            onNavigateToNative?.let { navigate ->
-                Button(
-                    onClick = navigate,
-                    modifier = Modifier.padding(start = 20.dp, top = 10.dp)
-                ) {
-                    Text("Open Android Native Screen")
-                }
+            AppState.HOME -> {
+                PlatformNavigation(
+                    navigationState = navigationState,
+                    onNavigateToNative = onNavigateToNative,
+                    onNavigateToSwiftUI = onNavigateToSwiftUI
+                )
             }
         }
     }
 }
+
+// プラットフォーム固有のナビゲーション
+@Composable
+expect fun PlatformNavigation(
+    navigationState: NavigationState,
+    onNavigateToNative: (() -> Unit)?,
+    onNavigateToSwiftUI: (() -> Unit)?
+)
 
 data class Country(
     val name: String,

@@ -1,6 +1,10 @@
 package com.my.composedemo
 
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 
 @Composable
 actual fun PlatformNavigation(
@@ -8,11 +12,14 @@ actual fun PlatformNavigation(
     onNavigateToNative: (() -> Unit)?,
     onNavigateToSwiftUI: (() -> Unit)?
 ) {
-    // iOS用の共通ナビゲーションコンテンツを使用
-    // SwiftUIのBottomNavigationはiOS側で処理
-    NavigationContent(
-        navigationState = navigationState,
-        onNavigateToNative = onNavigateToNative,
-        onNavigateToSwiftUI = onNavigateToSwiftUI
-    )
+    // iOS側ではプレースホルダーを表示（実際のナビゲーションはSwiftUIで実装）
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = androidx.compose.ui.Alignment.Center
+    ) {
+        Text(
+            text = "iOS App (Placeholder)",
+            style = MaterialTheme.typography.headlineMedium
+        )
+    }
 }

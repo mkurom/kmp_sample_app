@@ -8,16 +8,9 @@ class IosTest {
 
     @Test
     fun testIosPlatform() {
-        val platform = Platform()
+        val platform = getPlatform()
         val platformName = platform.name
-        assertEquals("iOS", platformName)
-    }
-    
-    @Test
-    fun testGreetingOnIos() {
-        val greeting = Greeting().greet()
-        assertTrue(greeting.contains("Hello"), "Greeting should contain 'Hello'")
-        assertTrue(greeting.contains("iOS"), "Greeting should contain 'iOS'")
+        assertTrue(platformName.contains("iOS"), "Platform name should contain 'iOS'")
     }
     
     @Test

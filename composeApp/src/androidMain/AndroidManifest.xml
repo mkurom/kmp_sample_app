@@ -10,18 +10,13 @@
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity
             android:exported="true"
-            android:name=".MainActivity">
+            android:name="com.my.composedemo.ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-        <activity
-            android:exported="false"
-            android:name=".AndroidNativeActivity"
-            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
     </application>
 
 </manifest>

@@ -5,3 +5,14 @@ PRODUCT_BUNDLE_IDENTIFIER=com.my.composedemo.ComposeDemo$(TEAM_ID)
 
 CURRENT_PROJECT_VERSION=1
 MARKETING_VERSION=1.0
+
+// 環境別設定（デフォルトは本番環境）
+API_BASE_URL=https://api.example.com
+ENVIRONMENT_NAME=Production
+BUNDLE_ID_SUFFIX=
+
+// KMP Framework Build Type設定
+KOTLIN_FRAMEWORK_BUILD_TYPE=release
+
+// 環境別Bundle Identifier
+PRODUCT_BUNDLE_IDENTIFIER=com.my.composedemo.ComposeDemo$(TEAM_ID)$(BUNDLE_ID_SUFFIX)

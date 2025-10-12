@@ -2,20 +2,13 @@ package com.my.composedemo
 
 actual class EnvironmentConfig {
     actual val apiBaseUrl: String
-        get() = Platform.isDebugBinary.let { isDebug ->
-            when {
-                isDebug -> "https://dev-api.example.com"
-                else -> "https://api.example.com"
-            }
-        }
+        get() = "https://api.example.com"
     
     actual val environmentName: String
-        get() = Platform.isDebugBinary.let { isDebug ->
-            if (isDebug) "Development" else "Production"
-        }
+        get() = "Production"
     
     actual val isDebug: Boolean
-        get() = Platform.isDebugBinary
+        get() = false
     
     actual val applicationId: String
         get() = "com.my.composedemo.ComposeDemo"

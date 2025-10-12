@@ -39,6 +39,23 @@ jobs:
       
     - name: Run iOS unit tests
       run: ./gradlew :composeApp:iosSimulatorArm64Test
+      
+    - name: Run specific unit tests
+      run: |
+        echo "Running InMemoryCountryDataSource tests..."
+        ./gradlew :composeApp:testDebugUnitTest --tests "*InMemoryCountryDataSourceTest*"
+        
+        echo "Running AppViewModel tests..."
+        ./gradlew :composeApp:testDebugUnitTest --tests "*AppViewModelTest*"
+        
+        echo "Running HomeViewModel tests..."
+        ./gradlew :composeApp:testDebugUnitTest --tests "*HomeViewModelTest*"
+        
+        echo "Running Country model tests..."
+        ./gradlew :composeApp:testDebugUnitTest --tests "*CountryTest*"
+        
+        echo "Running AppState model tests..."
+        ./gradlew :composeApp:testDebugUnitTest --tests "*AppStateTest*"
 
   lint:
     name: Code Quality Checks

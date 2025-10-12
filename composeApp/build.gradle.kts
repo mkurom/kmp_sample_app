@@ -53,12 +53,20 @@ android {
     namespace = "com.my.composedemo"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "com.my.composedemo"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        
+        // BuildConfigを有効化
+        buildConfigField("String", "API_BASE_URL", "\"https://api.example.com\"")
+        buildConfigField("String", "ENVIRONMENT_NAME", "\"Production\"")
     }
     packaging {
         resources {
@@ -68,12 +76,29 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+            applicationIdSuffix = ""
+            buildConfigField("String", "API_BASE_URL", "\"https://api.example.com\"")
+            buildConfigField("String", "ENVIRONMENT_NAME", "\"Production\"")
+            resValue("string", "app_name", "ComposeDemo")
+            resValue("string", "environment", "Production")
         }
         create("stg") {
             isDebuggable = true
+            applicationIdSuffix = ".stg"
+            buildConfigField("String", "API_BASE_URL", "\"https://staging-api.example.com\"")
+            buildConfigField("String", "ENVIRONMENT_NAME", "\"Staging\"")
+            signingConfig = signingConfigs.getByName("debug")
+            resValue("string", "app_name", "ComposeDemo Staging")
+            resValue("string", "environment", "Staging")
         }
         create("dev") {
             isDebuggable = true
+            applicationIdSuffix = ".dev"
+            buildConfigField("String", "API_BASE_URL", "\"https://dev-api.example.com\"")
+            buildConfigField("String", "ENVIRONMENT_NAME", "\"Development\"")
+            signingConfig = signingConfigs.getByName("debug")
+            resValue("string", "app_name", "ComposeDemo Dev")
+            resValue("string", "environment", "Development")
         }
     }
     compileOptions {

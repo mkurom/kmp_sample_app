@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ComposeDemo</string>
+    <string name="environment">Production</string>
 </resources>

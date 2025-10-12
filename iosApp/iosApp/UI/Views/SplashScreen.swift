@@ -1,19 +1,7 @@
 import SwiftUI
 
-struct SplashScreen: View {
-    @State private var isActive = false
-
-    var body: some View {
-        if isActive {
-            MainNavigationView()
-        } else {
-            SplashScreenView(isActive: $isActive)
-        }
-    }
-}
-
 struct SplashScreenView: View {
-    @Binding var isActive: Bool
+    let onComplete: () -> Void
     @State private var opacity = 0.5
 
     var body: some View {
@@ -30,19 +18,19 @@ struct SplashScreenView: View {
             withAnimation(.easeIn(duration: 1.0)) {
                 self.opacity = 1.0
             }
+            
+            // スプラッシュ画面の表示時間後に完了を通知
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                onComplete()
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.white)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                withAnimation {
-                    self.isActive = true
-                }
-            }
-        }
     }
 }
 
 #Preview {
-    SplashScreen()
+    SplashScreenView {
+        print("Splash completed")
+    }
 }

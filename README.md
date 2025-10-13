@@ -33,3 +33,44 @@ in your IDE’s toolbar or open the [/iosApp](./iosApp) directory in Xcode and r
 ---
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+## Architecture
+
+### KMP (Shared Logic)
+- Pattern: Clean Architecture + MVVM + Repository + DI (Koin)
+- Layers
+  - Domain: entities, repository interfaces (e.g., `domain/model/*`, `domain/repository/*`)
+  - Data: repository implementations, data sources (e.g., `data/repository/*`, `data/datasource/*`)
+  - Presentation: ViewModels exposing `StateFlow` (e.g., `presentation/viewmodel/*`)
+  - DI: Koin modules wiring dependencies (e.g., `di/AppModule.kt`)
+
+### CMP (Compose Multiplatform UI)
+- Thin UI that renders state from KMP ViewModels.
+- App-level navigation is delegated to the platform layer.
+- Example screens: `composeApp/src/commonMain/kotlin/com/my/composedemo/ScreenContent.kt`
+
+### iOS (SwiftUI)
+- Pattern: MVVM + Coordinator (Router) + `EnvironmentObject`.
+- `AppCoordinator` owns app navigation and receives `NavigationState` via `.environmentObject(...)`.
+- Entry point: `iosApp/iosApp/App/iOSApp.swift` (`@main`).
+- Coordinator: `iosApp/iosApp/Platform/AppCoordinator.swift`.
+- App navigation state: `iosApp/iosApp/Platform/NavigationState.swift`.
+
+### Android
+- Entry point: `composeApp/src/androidMain/AndroidManifest.xml` → `com.my.composedemo.ui.activities.MainActivity`.
+- `MainActivity` bootstraps DI (Koin) and sets Compose content with `App()`.
+- App-level navigation can be added with Compose Navigation as needed.
+
+### Data Flow
+- UI (CMP/SwiftUI) observes KMP ViewModel `StateFlow`.
+- User actions call KMP use-cases via ViewModel methods.
+- Repositories abstract data sources; DI provides implementations.
+
+### Migration/Replace Strategy (CMP → SwiftUI Native)
+1. Keep KMP as the single source of business logic.
+2. Replace screens UI-first in SwiftUI while bridging to KMP ViewModels.
+3. Optionally migrate specific use-cases to Swift over time.
+4. Remove CMP screens once SwiftUI reaches parity.
+
+### Notes
+- Common `NavigationState` in KMP is deprecated to avoid platform navigation overlap; prefer platform-native navigation (SwiftUI Coordinator on iOS).

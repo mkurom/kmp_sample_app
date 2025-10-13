@@ -12,7 +12,8 @@ enum class TabItem(val title: String, val icon: String) {
     SETTINGS("Settings", "⚙️") // gear
 }
 
-// 共通ナビゲーション状態管理
+// 共通ナビゲーション状態管理（プラットフォーム側のナビと重複回避のため使用非推奨）
+@Deprecated("Use platform-native navigation (e.g., SwiftUI Coordinator) instead")
 class NavigationState {
     private val _selectedTab = MutableStateFlow(TabItem.HOME)
     val selectedTab: StateFlow<TabItem> = _selectedTab.asStateFlow()

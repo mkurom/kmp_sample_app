@@ -6,7 +6,8 @@ struct iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AppCoordinator(navigationState: navigationState)
+            AppCoordinator()
+                .environmentObject(navigationState)
         }
     }
 }

@@ -8,14 +8,8 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun App() {
-    val navigationState = remember { NavigationState() }
-    
     MaterialTheme {
-        PlatformNavigation(
-            navigationState = navigationState,
-            onNavigateToNative = null,
-            onNavigateToSwiftUI = null
-        )
+        ScreenContent(screenType = ComposeScreenType.HOME)
     }
 }
 

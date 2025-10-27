@@ -1,11 +1,12 @@
 package com.my.composedemo.presentation.viewmodel
 
 import com.my.composedemo.domain.model.Country
-import com.my.composedemo.domain.model.TabItem
+import com.my.composedemo.domain.model.TabItemIcon
 import com.my.composedemo.domain.model.Theme
 import com.my.composedemo.domain.model.User
 import com.my.composedemo.domain.repository.CountryRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -24,6 +25,7 @@ import kotlin.test.assertTrue
  * HomeViewModelのユニットテスト
  * ホーム画面の状態管理とビジネスロジックをテスト
  */
+@OptIn(ExperimentalCoroutinesApi::class)
 class HomeViewModelTest {
 
     // シンプルなモック実装
@@ -60,11 +62,11 @@ class HomeViewModelTest {
         val viewModel = HomeViewModel(mockCountryRepository, appViewModel)
 
         // When
-        viewModel.selectTab(TabItem.SEARCH)
+        viewModel.selectTab(TabItemIcon.SEARCH)
         val selectedTab = viewModel.selectedTab.first()
 
         // Then
-        assertEquals(TabItem.SEARCH, selectedTab)
+        assertEquals(TabItemIcon.SEARCH, selectedTab)
     }
 
     @Test
@@ -152,14 +154,14 @@ class HomeViewModelTest {
         val viewModel = HomeViewModel(mockCountryRepository, appViewModel)
 
         // When
-        viewModel.selectTab(TabItem.PROFILE)
-        val profileTab = viewModel.selectedTab.first()
+        viewModel.selectTab(TabItemIcon.PROFILE)
+        val selectedProfileTab = viewModel.selectedTab.first()
         
-        viewModel.selectTab(TabItem.SETTINGS)
-        val settingsTab = viewModel.selectedTab.first()
+        viewModel.selectTab(TabItemIcon.SETTINGS)
+        val selectedSettingsTab = viewModel.selectedTab.first()
 
         // Then
-        assertEquals(TabItem.PROFILE, profileTab)
-        assertEquals(TabItem.SETTINGS, settingsTab)
+        assertEquals(TabItemIcon.PROFILE, selectedProfileTab)
+        assertEquals(TabItemIcon.SETTINGS, selectedSettingsTab)
     }
 }

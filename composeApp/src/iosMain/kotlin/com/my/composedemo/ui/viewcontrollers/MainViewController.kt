@@ -4,8 +4,9 @@ import androidx.compose.ui.window.ComposeUIViewController
 import com.my.composedemo.App
 import com.my.composedemo.di.appModule
 import org.koin.core.context.startKoin
+import platform.UIKit.UIViewController
 
-fun MainViewController() =
+fun MainViewController(): UIViewController =
     ComposeUIViewController {
         // Koinを初期化
         startKoin {

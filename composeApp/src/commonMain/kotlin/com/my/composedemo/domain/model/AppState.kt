@@ -11,9 +11,9 @@ enum class AppState {
 }
 
 /**
- * ナビゲーションのタブを表現するエンティティ
+ * ナビゲーションのタブを表現するエンティティ（iOS用）
  */
-enum class TabItem(val title: String, val icon: String) {
+enum class TabItemIcon(val title: String, val icon: String) {
     HOME("Home", "🏠"),
     SEARCH("Search", "🔍"),
     PROFILE("Profile", "👤"),

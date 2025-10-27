@@ -6,4 +6,5 @@ expect class EnvironmentConfig {
     val environmentName: String
     val isDebug: Boolean
     val applicationId: String
+    val googleMapsApiKey: String
 }

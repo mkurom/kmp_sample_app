@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.my.composedemo.domain.model.User
 import com.my.composedemo.domain.model.Theme
-import com.my.composedemo.domain.model.TabItem
+import com.my.composedemo.domain.model.TabItemIcon
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

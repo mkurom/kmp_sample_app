@@ -10,5 +10,9 @@
 	<true/>
 	<key>ENVIRONMENT_NAME</key>
 	<string>$(ENVIRONMENT_NAME)</string>
+	<key>UIDesignRequiresCompatibility</key>
+	<false/>
+	<key>GMSApiKey</key>
+	<string>AIzaSyBqmmYxmoRMaxLhdvFQa7YXvxO4UI7pOvs</string>
 </dict>
 </plist>

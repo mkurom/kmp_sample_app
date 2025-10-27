@@ -3,9 +3,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.androidApplication)  // 順序を変更: kotlinMultiplatformの後に適用
 }
 
 kotlin {
@@ -29,6 +29,8 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation("com.google.android.gms:play-services-maps:18.2.0")
+            implementation("com.google.maps.android:maps-compose:4.3.0")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -69,6 +71,17 @@ android {
         // BuildConfigを有効化
         buildConfigField("String", "API_BASE_URL", "\"https://api.example.com\"")
         buildConfigField("String", "ENVIRONMENT_NAME", "\"Production\"")
+        
+        // Google Maps API Key from local.properties or environment variable
+        val googleMapsApiKey = project.findProperty("GOOGLE_MAPS_API_KEY") as String? 
+            ?: System.getenv("GOOGLE_MAPS_API_KEY") 
+            ?: "YOUR_GOOGLE_MAPS_API_KEY_HERE"
+        
+        println("Google Maps API Key: $googleMapsApiKey")
+        buildConfigField("String", "GOOGLE_MAPS_API_KEY", "\"$googleMapsApiKey\"")
+        
+        // Manifest placeholders for Google Maps API Key
+        manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = googleMapsApiKey
     }
     packaging {
         resources {
@@ -110,6 +123,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.core.ktx)
     debugImplementation(compose.uiTooling)
 }
 

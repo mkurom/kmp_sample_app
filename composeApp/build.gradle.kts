@@ -50,9 +50,6 @@ kotlin {
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.turbine)
         }
-        
-        // Ensure commonTest can access commonMain
-        commonTest.dependsOn(commonMain)
     }
 }
 

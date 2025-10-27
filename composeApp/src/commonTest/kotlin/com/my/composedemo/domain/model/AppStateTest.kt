@@ -1,6 +1,6 @@
 package com.my.composedemo.domain.model
 
-import com.my.composedemo.shared.AppState
+import com.my.composedemo.shared.domain.model.AppState
 import com.my.composedemo.shared.domain.model.Theme
 import com.my.composedemo.shared.domain.model.User
 import com.my.composedemo.shared.domain.model.UserPreferences

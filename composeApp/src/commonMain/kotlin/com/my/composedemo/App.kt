@@ -40,7 +40,7 @@ fun App() {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = innerPadding.calculateBottomPadding() - 16.dp)
+                    .padding(bottom = innerPadding.calculateBottomPadding())
             ) {
                 when (seletedIndex.value) {
                     ComposeScreenType.HOME.ordinal -> HomeScreen()

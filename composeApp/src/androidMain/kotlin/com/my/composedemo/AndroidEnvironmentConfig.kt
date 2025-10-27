@@ -14,4 +14,7 @@ actual class EnvironmentConfig {
     
     actual val applicationId: String
         get() = BuildConfig.APPLICATION_ID
+    
+    actual val googleMapsApiKey: String
+        get() = BuildConfig.GOOGLE_MAPS_API_KEY
 }

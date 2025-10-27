@@ -3,7 +3,7 @@ package com.my.composedemo.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.my.composedemo.domain.model.Country
-import com.my.composedemo.domain.model.TabItem
+import com.my.composedemo.domain.model.TabItemIcon
 import com.my.composedemo.domain.model.User
 import com.my.composedemo.domain.model.Theme
 import com.my.composedemo.domain.repository.CountryRepository
@@ -30,8 +30,8 @@ class HomeViewModel(
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
     
     // ナビゲーション状態
-    private val _selectedTab = MutableStateFlow(TabItem.HOME)
-    val selectedTab: StateFlow<TabItem> = _selectedTab.asStateFlow()
+    private val _selectedTab = MutableStateFlow(TabItemIcon.HOME)
+    val selectedTab: StateFlow<TabItemIcon> = _selectedTab.asStateFlow()
     
     init {
         loadCountries()
@@ -64,7 +64,7 @@ class HomeViewModel(
     /**
      * タブを選択
      */
-    fun selectTab(tab: TabItem) {
+    fun selectTab(tab: TabItemIcon) {
         _selectedTab.value = tab
     }
     

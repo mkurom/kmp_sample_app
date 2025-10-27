@@ -1,80 +1,89 @@
 package com.my.composedemo.presentation.ui.screen
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.my.composedemo.domain.model.Theme
+import com.my.composedemo.presentation.viewmodel.AppViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.koinInject
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
 @Composable
 fun SettingsScreen() {
+    val appViewModel: AppViewModel = koinInject()
+    val theme by appViewModel.theme.collectAsState()
+    
     var notificationsEnabled by remember { mutableStateOf(true) }
-    var darkModeEnabled by remember { mutableStateOf(false) }
+    val darkModeEnabled = theme == Theme.DARK
     var locationEnabled by remember { mutableStateOf(true) }
     
-    Surface(
+    Scaffold(
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        Column(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "Settings",
+                        style = MaterialTheme.typography.headlineLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+            )
+        },
+    ) { innerPadding ->
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(innerPadding)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Header
-            Text(
-                text = "Settings",
-                style = MaterialTheme.typography.headlineLarge,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-            
-            Text(
-                text = "Customize your app experience",
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(bottom = 24.dp)
-            )
-            
             // Settings Section
-            SettingsSection(title = "Notifications") {
-                SettingsSwitch(
-                    title = "Push Notifications",
-                    checked = notificationsEnabled,
-                    onCheckedChange = { notificationsEnabled = it }
-                )
-                
-                SettingsSwitch(
-                    title = "Email Notifications",
-                    checked = true,
-                    onCheckedChange = { }
-                )
+            item {
+                SettingsSection(title = "Notifications") {
+                    SettingsSwitch(
+                        title = "Push Notifications",
+                        checked = notificationsEnabled,
+                        onCheckedChange = { notificationsEnabled = it }
+                    )
+
+                    SettingsSwitch(
+                        title = "Email Notifications",
+                        checked = true,
+                        onCheckedChange = { }
+                    )
+                }
             }
-            
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            SettingsSection(title = "Appearance") {
-                SettingsSwitch(
-                    title = "Dark Mode",
-                    checked = darkModeEnabled,
-                    onCheckedChange = { darkModeEnabled = it }
-                )
+
+            item {
+                SettingsSection(title = "Appearance") {
+                    SettingsSwitch(
+                        title = "Dark Mode",
+                        checked = darkModeEnabled,
+                        onCheckedChange = { 
+                            val newTheme = if (it) Theme.DARK else Theme.LIGHT
+                            appViewModel.setTheme(newTheme)
+                        }
+                    )
+                }
             }
-            
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            SettingsSection(title = "Location") {
-                SettingsSwitch(
-                    title = "Location Services",
-                    checked = locationEnabled,
-                    onCheckedChange = { locationEnabled = it }
-                )
+
+            item {
+                SettingsSection(title = "Location") {
+                    SettingsSwitch(
+                        title = "Location Services",
+                        checked = locationEnabled,
+                        onCheckedChange = { locationEnabled = it }
+                    )
+                }
             }
         }
     }
@@ -128,10 +137,4 @@ fun SettingsSwitch(
             onCheckedChange = onCheckedChange
         )
     }
-}
-
-@Preview
-@Composable
-fun SettingsScreenPreview() {
-    SettingsScreen()
 }

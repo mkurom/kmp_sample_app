@@ -1,8 +1,9 @@
 package com.my.composedemo.presentation.viewmodel
 
-import com.my.composedemo.domain.model.Theme
-import com.my.composedemo.domain.model.User
-import com.my.composedemo.domain.model.UserPreferences
+import com.my.composedemo.shared.domain.model.Theme
+import com.my.composedemo.shared.domain.model.User
+import com.my.composedemo.shared.domain.model.UserPreferences
+import com.my.composedemo.shared.presentation.viewmodel.AppViewModel
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

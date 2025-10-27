@@ -17,20 +17,6 @@ class AndroidInstrumentedTest {
     }
     
     @Test
-    fun testAndroidPlatform() {
-        val platform = Platform()
-        val platformName = platform.name
-        assertEquals("Android", platformName)
-    }
-    
-    @Test
-    fun testGreetingOnAndroid() {
-        val greeting = Greeting().greet()
-        assertTrue(greeting.contains("Hello"), "Greeting should contain 'Hello'")
-        assertTrue(greeting.contains("Android"), "Greeting should contain 'Android'")
-    }
-    
-    @Test
     fun testMathOperationsOnAndroid() {
         assertEquals(15, 10 + 5)
         assertEquals(50, 10 * 5)

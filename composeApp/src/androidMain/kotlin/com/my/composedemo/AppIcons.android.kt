@@ -1,4 +1,4 @@
-package com.my.composedemo
+package com.my.composedemo.platform
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

@@ -1,4 +1,4 @@
-package com.my.composedemo
+package com.my.composedemo.platform
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter

@@ -1,4 +1,4 @@
-package com.my.composedemo.util
+package com.my.composedemo.platform.util
 
 import android.graphics.RectF
 import android.graphics.PointF
@@ -14,45 +14,45 @@ actual object NativeTypeConverter {
     /**
      * Converts Android Rect to common Rect
      */
-    actual fun rectToCommon(rect: Any): com.my.composedemo.util.Rect {
+    actual fun rectToCommon(rect: Any): com.my.composedemo.platform.util.Rect {
         return when (rect) {
-            is Rect -> com.my.composedemo.util.Rect(
+            is Rect -> com.my.composedemo.platform.util.Rect(
                 x = rect.left.toFloat(),
                 y = rect.top.toFloat(),
                 width = rect.width().toFloat(),
                 height = rect.height().toFloat()
             )
-            is RectF -> com.my.composedemo.util.Rect(
+            is RectF -> com.my.composedemo.platform.util.Rect(
                 x = rect.left,
                 y = rect.top,
                 width = rect.width(),
                 height = rect.height()
             )
-            else -> com.my.composedemo.util.Rect(0f, 0f, 0f, 0f)
+            else -> com.my.composedemo.platform.util.Rect(0f, 0f, 0f, 0f)
         }
     }
     
     /**
      * Converts Android Point to common Point
      */
-    actual fun pointToCommon(point: Any): com.my.composedemo.util.Point {
+    actual fun pointToCommon(point: Any): com.my.composedemo.platform.util.Point {
         val androidPoint = point as? Point
         if (androidPoint != null) {
-            return com.my.composedemo.util.Point(
+            return com.my.composedemo.platform.util.Point(
                 x = androidPoint.x.toFloat(),
                 y = androidPoint.y.toFloat()
             )
         }
-        return com.my.composedemo.util.Point(0f, 0f)
+        return com.my.composedemo.platform.util.Point(0f, 0f)
     }
     
     /**
      * Converts size to common Size
      */
-    actual fun sizeToCommon(size: Any): com.my.composedemo.util.Size {
+    actual fun sizeToCommon(size: Any): com.my.composedemo.platform.util.Size {
         val sizeInt = size as? android.util.Size
         if (sizeInt != null) {
-            return com.my.composedemo.util.Size(
+            return com.my.composedemo.platform.util.Size(
                 width = sizeInt.width.toFloat(),
                 height = sizeInt.height.toFloat()
             )
@@ -60,19 +60,19 @@ actual object NativeTypeConverter {
         
         val sizeF = size as? android.util.SizeF
         if (sizeF != null) {
-            return com.my.composedemo.util.Size(
+            return com.my.composedemo.platform.util.Size(
                 width = sizeF.width,
                 height = sizeF.height
             )
         }
         
-        return com.my.composedemo.util.Size(0f, 0f)
+        return com.my.composedemo.platform.util.Size(0f, 0f)
     }
     
     /**
      * Creates Android Rect from common Rect
      */
-    actual fun rectFromCommon(rect: com.my.composedemo.util.Rect): Any {
+    actual fun rectFromCommon(rect: com.my.composedemo.platform.util.Rect): Any {
         return Rect(
             rect.x.toInt(),
             rect.y.toInt(),
@@ -84,14 +84,14 @@ actual object NativeTypeConverter {
     /**
      * Creates Android PointF from common Point
      */
-    actual fun pointFromCommon(point: com.my.composedemo.util.Point): Any {
+    actual fun pointFromCommon(point: com.my.composedemo.platform.util.Point): Any {
         return PointF(point.x, point.y)
     }
     
     /**
      * Creates Android Size from common Size
      */
-    actual fun sizeFromCommon(size: com.my.composedemo.util.Size): Any {
+    actual fun sizeFromCommon(size: com.my.composedemo.platform.util.Size): Any {
         return android.util.SizeF(size.width, size.height)
     }
 }
@@ -103,8 +103,8 @@ object AndroidTypeHelpers {
     /**
      * Converts Rect to common Rect
      */
-    fun Rect.toCommonRect(): com.my.composedemo.util.Rect {
-        return com.my.composedemo.util.Rect(
+    fun Rect.toCommonRect(): com.my.composedemo.platform.util.Rect {
+        return com.my.composedemo.platform.util.Rect(
             x = this.left.toFloat(),
             y = this.top.toFloat(),
             width = this.width().toFloat(),
@@ -115,8 +115,8 @@ object AndroidTypeHelpers {
     /**
      * Converts RectF to common Rect
      */
-    fun RectF.toCommonRect(): com.my.composedemo.util.Rect {
-        return com.my.composedemo.util.Rect(
+    fun RectF.toCommonRect(): com.my.composedemo.platform.util.Rect {
+        return com.my.composedemo.platform.util.Rect(
             x = this.left,
             y = this.top,
             width = this.width(),
@@ -127,7 +127,7 @@ object AndroidTypeHelpers {
     /**
      * Converts common Rect to android.graphics.Rect
      */
-    fun com.my.composedemo.util.Rect.toAndroidRect(): Rect {
+    fun com.my.composedemo.platform.util.Rect.toAndroidRect(): Rect {
         return Rect(
             x.toInt(),
             y.toInt(),
@@ -139,7 +139,7 @@ object AndroidTypeHelpers {
     /**
      * Converts common Rect to RectF
      */
-    fun com.my.composedemo.util.Rect.toAndroidRectF(): RectF {
+    fun com.my.composedemo.platform.util.Rect.toAndroidRectF(): RectF {
         return RectF(
             x,
             y,

@@ -1,8 +1,8 @@
 package com.my.composedemo.ui.viewcontrollers
 
 import androidx.compose.ui.window.ComposeUIViewController
-import com.my.composedemo.App
-import com.my.composedemo.di.appModule
+import com.my.composedemo.shared.App
+import com.my.composedemo.shared.di.appModule
 import org.koin.core.context.startKoin
 import platform.UIKit.UIViewController
 

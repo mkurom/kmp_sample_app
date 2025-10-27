@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    alias(libs.plugins.androidApplication)  // 順序を変更: kotlinMultiplatformの後に適用
+    alias(libs.plugins.androidApplication)
 }
 
 kotlin {

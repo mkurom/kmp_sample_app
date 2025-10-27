@@ -1,4 +1,4 @@
-package com.my.composedemo
+package com.my.composedemo.platform
 
 import kotlinx.cinterop.*
 import platform.Foundation.*

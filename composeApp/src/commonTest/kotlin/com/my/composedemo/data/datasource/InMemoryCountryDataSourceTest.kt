@@ -1,6 +1,7 @@
 package com.my.composedemo.data.datasource
 
-import com.my.composedemo.domain.model.Country
+import com.my.composedemo.shared.domain.model.Country
+import com.my.composedemo.shared.data.datasource.InMemoryCountryDataSource
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test

@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.my.composedemo.App
-import com.my.composedemo.di.appModule
+import com.my.composedemo.shared.App
+import com.my.composedemo.shared.di.appModule
 import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {

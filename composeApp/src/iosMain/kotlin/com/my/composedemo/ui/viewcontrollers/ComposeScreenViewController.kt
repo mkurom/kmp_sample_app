@@ -1,9 +1,9 @@
 package com.my.composedemo.ui.viewcontrollers
 
 import androidx.compose.ui.window.ComposeUIViewController
-import com.my.composedemo.ScreenContent
-import com.my.composedemo.ComposeScreenType
-import com.my.composedemo.di.appModule
+import com.my.composedemo.shared.ScreenContent
+import com.my.composedemo.shared.ComposeScreenType
+import com.my.composedemo.shared.di.appModule
 import org.koin.core.context.startKoin
 
 fun createComposeScreen(screenType: String) =

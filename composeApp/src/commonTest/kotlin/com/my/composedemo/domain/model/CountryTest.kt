@@ -1,5 +1,7 @@
 package com.my.composedemo.domain.model
 
+import com.my.composedemo.shared.domain.model.Country
+
 import kotlinx.datetime.TimeZone
 import kotlin.test.Test
 import kotlin.test.assertEquals

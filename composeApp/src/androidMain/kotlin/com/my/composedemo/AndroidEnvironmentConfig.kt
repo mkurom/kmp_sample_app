@@ -1,4 +1,4 @@
-package com.my.composedemo
+package com.my.composedemo.platform
 
 import com.my.composedemo.BuildConfig
 

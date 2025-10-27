@@ -1,10 +1,12 @@
 package com.my.composedemo.presentation.viewmodel
 
-import com.my.composedemo.domain.model.Country
-import com.my.composedemo.domain.model.TabItemIcon
-import com.my.composedemo.domain.model.Theme
-import com.my.composedemo.domain.model.User
-import com.my.composedemo.domain.repository.CountryRepository
+import com.my.composedemo.shared.domain.model.Country
+import com.my.composedemo.shared.domain.model.TabItemIcon
+import com.my.composedemo.shared.domain.model.Theme
+import com.my.composedemo.shared.domain.model.User
+import com.my.composedemo.shared.domain.repository.CountryRepository
+import com.my.composedemo.shared.presentation.viewmodel.AppViewModel
+import com.my.composedemo.shared.presentation.viewmodel.HomeViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow

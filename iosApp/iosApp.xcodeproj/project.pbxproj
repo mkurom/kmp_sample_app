@@ -6,12 +6,16 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E97FA1D92EA6C2CB0032FFB5 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = E97FA1D82EA6C2CB0032FFB5 /* GoogleMaps */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		898255D62FA36703E433E2E3 /* ComposeDemoDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComposeDemoDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		E99504542E7ED58300BDE6EC /* Exceptions for "iosApp" folder in "iosApp" target */ = {
+		E99504542E7ED58300BDE6EC /* Exceptions for "src" folder in "iosApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -26,12 +30,12 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		CB73A71933165D4BC004F1FF /* iosApp */ = {
+		CB73A71933165D4BC004F1FF /* src */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				E99504542E7ED58300BDE6EC /* Exceptions for "iosApp" folder in "iosApp" target */,
+				E99504542E7ED58300BDE6EC /* Exceptions for "src" folder in "iosApp" target */,
 			);
-			path = iosApp;
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97FA1D92EA6C2CB0032FFB5 /* GoogleMaps in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				0B6F7CAC2DFB6AA5DBA71E12 /* Configuration */,
-				CB73A71933165D4BC004F1FF /* iosApp */,
+				CB73A71933165D4BC004F1FF /* src */,
 				C99E9E29BA06CD7CE5555F18 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,10 +86,11 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				CB73A71933165D4BC004F1FF /* iosApp */,
+				CB73A71933165D4BC004F1FF /* src */,
 			);
 			name = iosApp;
 			packageProductDependencies = (
+				E97FA1D82EA6C2CB0032FFB5 /* GoogleMaps */,
 			);
 			productName = iosApp;
 			productReference = 898255D62FA36703E433E2E3 /* ComposeDemoDebug.app */;
@@ -115,6 +121,9 @@
 			);
 			mainGroup = 86FAA3DE08B8B833B341A6DB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E97FA1D72EA6C2CB0032FFB5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C99E9E29BA06CD7CE5555F18 /* Products */;
 			projectDirPath = "";
@@ -176,11 +185,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"src/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = src/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -276,11 +285,11 @@
 				BUNDLE_ID_SUFFIX = .dev;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"src/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = src/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -434,11 +443,11 @@
 				BUNDLE_ID_SUFFIX = .stg;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"src/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = src/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -535,11 +544,11 @@
 				BUNDLE_ID_SUFFIX = .dev;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Resources/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"src/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_FILE = src/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -587,6 +596,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E97FA1D72EA6C2CB0032FFB5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E97FA1D82EA6C2CB0032FFB5 /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E97FA1D72EA6C2CB0032FFB5 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMaps;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 85207C4960B838BD7CC46133 /* Project object */;
 }

@@ -12,10 +12,18 @@ This is a Kotlin Multiplatform project targeting Android, iOS.
 * [/iosApp](./iosApp/iosApp) contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform,
   you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
 
+### Environment Setup
+
+**Important**: This project requires a Google Maps API key to be configured. See [ENVIRONMENT_SETUP.md](./ENVIRONMENT_SETUP.md) for detailed instructions.
+
+Quick setup:
+- Set the `GOOGLE_MAPS_API_KEY` environment variable in your shell profile
+- Or add it to `local.properties` (this file is git-ignored)
+
 ### Build and Run Android Application
 
 To build and run the development version of the Android app, use the run configuration from the run widget
-in your IDE’s toolbar or build it directly from the terminal:
+in your IDE's toolbar or build it directly from the terminal:
 - on macOS/Linux
   ```shell
   ./gradlew :composeApp:assembleDebug

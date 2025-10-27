@@ -16,3 +16,6 @@ KOTLIN_FRAMEWORK_BUILD_TYPE=release
 
 // 環境別Bundle Identifier
 PRODUCT_BUNDLE_IDENTIFIER=com.my.composedemo.ComposeDemo$(TEAM_ID)$(BUNDLE_ID_SUFFIX)
+
+// Google Maps API Key (設定してください)
+GMS_API_KEY=YOUR_API_KEY_HERE

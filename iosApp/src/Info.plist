@@ -13,6 +13,6 @@
 	<key>UIDesignRequiresCompatibility</key>
 	<false/>
 	<key>GMSApiKey</key>
-	<string>AIzaSyBqmmYxmoRMaxLhdvFQa7YXvxO4UI7pOvs</string>
+	<string>$(GMS_API_KEY)</string>
 </dict>
 </plist>

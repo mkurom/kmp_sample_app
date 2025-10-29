@@ -19,3 +19,8 @@ captures
 
 # Cursor ignore
 .specstory
+
+# iOS Configuration files with sensitive data
+iosApp/Configuration/Config.xcconfig
+iosApp/Configuration/Config-Development.xcconfig
+iosApp/Configuration/Config-Staging.xcconfig

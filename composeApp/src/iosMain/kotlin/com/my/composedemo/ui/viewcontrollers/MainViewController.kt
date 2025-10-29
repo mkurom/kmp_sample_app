@@ -6,11 +6,16 @@ import com.my.composedemo.shared.di.appModule
 import org.koin.core.context.startKoin
 import platform.UIKit.UIViewController
 
-fun MainViewController(): UIViewController =
+import org.koin.dsl.module
+
+fun MainViewController(mapViewController: UIViewController): UIViewController =
     ComposeUIViewController {
         // Koinを初期化
         startKoin {
             modules(appModule)
+            modules(module {
+                single { mapViewController }
+            })
         }
         
         App()

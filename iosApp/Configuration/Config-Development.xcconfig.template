@@ -1,0 +1,22 @@
+TEAM_ID=
+
+PRODUCT_NAME=ComposeDemo
+PRODUCT_BUNDLE_IDENTIFIER=com.my.composedemo.ComposeDemo$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
+
+// Development環境設定
+API_BASE_URL=https://dev-api.example.com
+ENVIRONMENT_NAME=Development
+BUNDLE_ID_SUFFIX=.dev
+
+// KMP Framework Build Type設定（Developmentはdebug）
+KOTLIN_FRAMEWORK_BUILD_TYPE=debug
+
+// 環境別Bundle Identifier
+PRODUCT_BUNDLE_IDENTIFIER=com.my.composedemo.ComposeDemo$(TEAM_ID)$(BUNDLE_ID_SUFFIX)
+
+// Google Maps API Key (実際のAPIキーを設定してください)
+GMS_API_KEY=YOUR_API_KEY_HERE
+

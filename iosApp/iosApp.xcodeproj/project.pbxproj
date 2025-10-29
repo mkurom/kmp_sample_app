@@ -372,7 +372,7 @@
 		E929530C2E9A94DD0091961F /* Staging */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 0B6F7CAC2DFB6AA5DBA71E12 /* Configuration */;
-			baseConfigurationReferenceRelativePath = Config.xcconfig;
+			baseConfigurationReferenceRelativePath = "Config-Staging.xcconfig";
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -473,7 +473,7 @@
 		E929530E2E9A94ED0091961F /* Development */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 0B6F7CAC2DFB6AA5DBA71E12 /* Configuration */;
-			baseConfigurationReferenceRelativePath = Config.xcconfig;
+			baseConfigurationReferenceRelativePath = "Config-Development.xcconfig";
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

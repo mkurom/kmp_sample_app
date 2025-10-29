@@ -1,61 +1,45 @@
 package com.my.composedemo.platform.components
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.interop.UIKitView
-import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.cinterop.cValue
-import platform.WebKit.WKWebView
-import platform.WebKit.WKWebViewConfiguration
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.get
+import platform.Foundation.NSNumber
+import platform.UIKit.UIViewController
+import platform.Foundation.setValue
+import platform.Foundation.NSLog
 
-@OptIn(ExperimentalForeignApi::class)
+/**
+ * iOS での MapView 実装
+ *
+ * SPM で導入済みの Google Maps SDK を使用
+ */
+@OptIn(kotlinx.cinterop.ExperimentalForeignApi::class)
 @Composable
 actual fun MapView(
     modifier: Modifier,
+    latitude: Double,
+    longitude: Double,
+    zoom: Float,
     onMapClick: (() -> Unit)?
 ) {
+    val mapViewController = remember {
+        object : KoinComponent {
+            fun getViewController(): UIViewController = get()
+        }.getViewController()
+    }
+
     UIKitView(
         factory = {
-            val webView = WKWebView(frame = cValue { platform.CoreGraphics.CGRectZero }, configuration = WKWebViewConfiguration())
-            
-            // Google Maps Embed APIを使用
-            val apiKey = platform.Foundation.NSBundle.mainBundle.objectForInfoDictionaryKey("GMSApiKey") as? String
-            val htmlContent = """
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <style>
-                        body, html { margin: 0; padding: 0; height: 100%; }
-                        #map { height: 100%; width: 100%; }
-                    </style>
-                </head>
-                <body>
-                    <div id="map"></div>
-                    <script>
-                        function initMap() {
-                            const tokyo = { lat: 35.6762, lng: 139.6503 };
-                            const map = new google.maps.Map(document.getElementById("map"), {
-                                zoom: 10,
-                                center: tokyo,
-                            });
-                        }
-                    </script>
-                    <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=$apiKey&callback=initMap">
-                    </script>
-                </body>
-                </html>
-            """.trimIndent()
-            
-            webView.loadHTMLString(htmlContent, baseURL = null)
-            webView
+            mapViewController.view.also {}
         },
-        modifier = modifier.fillMaxSize(),
-        update = { view ->
-            // Update logic if needed
+        modifier = modifier,
+        update = { _ ->
+            mapViewController.setValue(NSNumber(latitude), forKey = "latitude")
+            mapViewController.setValue(NSNumber(longitude), forKey = "longitude")
+            mapViewController.setValue(NSNumber(zoom.toDouble()), forKey = "zoom")
         }
     )
 }
-

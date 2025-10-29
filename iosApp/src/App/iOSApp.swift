@@ -1,12 +1,16 @@
 import SwiftUI
 import ComposeApp
+import GoogleMaps
 
 @main
 struct iOSApp: App {
     
-    // native SDK 初期化
-    // init() {
-    // }
+    init() {
+        guard let apiKey = Bundle.main.object(forInfoDictionaryKey: "GMSApiKey") as? String else {
+            fatalError("GMSApiKey is not set in Info.plist")
+        }
+        GMSServices.provideAPIKey(apiKey)
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -18,7 +22,8 @@ struct iOSApp: App {
 struct ComposeView: UIViewControllerRepresentable {
     // 2. 必須のメソッド。作成したいViewControllerを返すメソッドを実装する
     func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController() 
+        let mapViewController = MapViewController()
+        return MainViewControllerKt.MainViewController(mapViewController: mapViewController)
     }
 
     // 3. 必須のメソッド。Viewが更新された場合に必要な処理を実装する

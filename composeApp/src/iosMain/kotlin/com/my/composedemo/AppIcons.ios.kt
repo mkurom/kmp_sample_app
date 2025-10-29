@@ -9,6 +9,7 @@ import composedemo.composeapp.generated.resources.home
 import composedemo.composeapp.generated.resources.search
 import composedemo.composeapp.generated.resources.person
 import composedemo.composeapp.generated.resources.settings
+import composedemo.composeapp.generated.resources.arrow_back
 
 /**
  * iOS版ではSVGファイルをPainterとして読み込む
@@ -19,6 +20,7 @@ actual fun AppIconSearch(): ImageVector? = null
 actual fun AppIconProfile(): ImageVector? = null
 actual fun AppIconSettings(): ImageVector? = null
 actual fun AppIconPerson(): ImageVector? = null
+actual fun AppIconArrowBack(): ImageVector? = null
 
 @Composable
 actual fun AppIconHomePainter(): Painter? = painterResource(Res.drawable.home)
@@ -34,3 +36,6 @@ actual fun AppIconSettingsPainter(): Painter? = painterResource(Res.drawable.set
 
 @Composable
 actual fun AppIconPersonPainter(): Painter? = painterResource(Res.drawable.person)
+
+@Composable
+actual fun AppIconArrowBackPainter(): Painter? = painterResource(Res.drawable.arrow_back)

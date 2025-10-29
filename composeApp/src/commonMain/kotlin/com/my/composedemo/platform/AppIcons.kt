@@ -12,6 +12,7 @@ expect fun AppIconSearch(): ImageVector?
 expect fun AppIconProfile(): ImageVector?
 expect fun AppIconSettings(): ImageVector?
 expect fun AppIconPerson(): ImageVector?
+expect fun AppIconArrowBack(): ImageVector?
 
 /**
  * iOS用のPainter
@@ -26,4 +27,6 @@ expect fun AppIconProfilePainter(): Painter?
 expect fun AppIconSettingsPainter(): Painter?
 @Composable
 expect fun AppIconPersonPainter(): Painter?
+@Composable
+expect fun AppIconArrowBackPainter(): Painter?
 

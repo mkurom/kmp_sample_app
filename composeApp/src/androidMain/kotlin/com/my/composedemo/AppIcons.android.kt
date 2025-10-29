@@ -1,6 +1,7 @@
 package com.my.composedemo.platform
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
@@ -18,6 +19,7 @@ actual fun AppIconSearch(): ImageVector? = Icons.Outlined.Search
 actual fun AppIconProfile(): ImageVector? = Icons.Filled.Person
 actual fun AppIconSettings(): ImageVector? = Icons.Filled.Settings
 actual fun AppIconPerson(): ImageVector? = Icons.Filled.Person
+actual fun AppIconArrowBack(): ImageVector? = Icons.Filled.ArrowBack
 
 // Android版ではPainterはnullを返す（Material IconsのImageVectorを使用）
 @Composable
@@ -30,3 +32,5 @@ actual fun AppIconProfilePainter(): Painter? = null
 actual fun AppIconSettingsPainter(): Painter? = null
 @Composable
 actual fun AppIconPersonPainter(): Painter? = null
+@Composable
+actual fun AppIconArrowBackPainter(): Painter? = null

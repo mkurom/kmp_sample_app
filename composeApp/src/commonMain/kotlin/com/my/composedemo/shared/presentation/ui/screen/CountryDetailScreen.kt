@@ -37,8 +37,9 @@ import org.koin.compose.koinInject
 fun CountryDetailScreen(
     countryId: String?,
     onBack: () -> Unit = {},
-    countryRepository: CountryRepository = koinInject()
+    countryRepository: CountryRepository? = null
 ) {
+    val repo: CountryRepository = countryRepository ?: koinInject()
     var country by remember { mutableStateOf<Country?>(null) }
     var isLoading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
@@ -49,7 +50,7 @@ fun CountryDetailScreen(
             error = null
             try {
                 country = withContext(Dispatchers.Default) {
-                    countryRepository.getCountryById(countryId)
+                    repo.getCountryById(countryId)
                 }
                 if (country == null) {
                     error = "Country not found"

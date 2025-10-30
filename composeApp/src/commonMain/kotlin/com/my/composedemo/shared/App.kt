@@ -23,7 +23,10 @@ import com.arkivanov.decompose.router.stack.active
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
+import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.decompose.extensions.compose.stack.Children
+import com.arkivanov.essenty.lifecycle.destroy
+import com.arkivanov.essenty.lifecycle.resume
 import com.my.composedemo.platform.AppIconHome
 import com.my.composedemo.platform.AppIconSearch
 import com.my.composedemo.platform.AppIconProfile
@@ -44,6 +47,14 @@ fun HomeScreenWithNavigation() {
             componentContext = DefaultComponentContext(lifecycle = LifecycleRegistry()),
             homeViewModel = homeViewModel
         )
+    }
+
+    DisposableEffect(Unit) {
+        val lifecycle = rootComponent.lifecycle as LifecycleRegistry
+        lifecycle.resume()
+        onDispose {
+            lifecycle.destroy()
+        }
     }
     
     Children(

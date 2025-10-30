@@ -31,6 +31,16 @@ import org.koin.compose.koinInject
  * @param countryId 表示する国のID
  * @param onBack 戻るボタンクリック時のコールバック
  */
+/**
+ * Display detailed information for a country identified by its ID.
+ *
+ * Loads the country data and shows one of three states: a centered progress indicator while
+ * loading, an error message with a Back button when loading fails or the ID is missing, or the
+ * country's details (flag, name, time zone, and current time) on success.
+ *
+ * @param countryId The identifier of the country to display; when `null` an error state is shown.
+ * @param onBack Callback invoked when the user presses the top app bar navigation or the Back button.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CountryDetailScreen(
@@ -216,6 +226,12 @@ fun CountryDetailScreen(
     }
 }
 
+/**
+ * Format the current local time for the given country.
+ *
+ * @param country The country whose time zone and name are used to compute the local time.
+ * @return A message like "The time in {country.name} is H:M:S", or "Error getting time" if the time cannot be determined.
+ */
 private fun getCurrentTime(country: Country): String {
     return try {
         val time = Clock.System.now()
@@ -226,6 +242,11 @@ private fun getCurrentTime(country: Country): String {
     }
 }
 
+/**
+ * Renders a preview of CountryDetailScreen using a sample country ID for design-time previewing.
+ *
+ * This preview displays the CountryDetailScreen composable with `countryId = "us"` and a no-op back action.
+ */
 @Preview
 @Composable
 fun CountryDetailScreenPreview() {

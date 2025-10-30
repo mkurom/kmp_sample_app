@@ -18,6 +18,16 @@ import org.koin.compose.koinInject
  * HomeScreen - 国の一覧を表示
  * @param onNavigateToDetail 国詳細画面への遷移コールバック（countryIdを渡す）
  */
+/**
+ * Displays the Home screen with loading, error, and country-list states.
+ *
+ * Shows a top app bar titled "Home". While loading, displays a centered progress indicator;
+ * when an error is present, displays the error message and a Retry button that clears the error;
+ * otherwise displays a scrollable list of countries and calls the navigation callback when an item is selected.
+ *
+ * @param homeViewModel ViewModel that provides the screen's UI state and helpers; injected by default.
+ * @param onNavigateToDetail Callback invoked with the selected country's id.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -97,6 +107,11 @@ fun HomeScreen(
     }
 }
 
+/**
+ * Displays a design-time preview of HomeScreen.
+ *
+ * Uses a no-op navigation callback so the composable can be rendered in tooling without navigation side effects.
+ */
 @Preview
 @Composable
 fun HomeScreenPreview() {

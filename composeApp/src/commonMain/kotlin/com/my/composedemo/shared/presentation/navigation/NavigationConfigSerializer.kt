@@ -13,6 +13,13 @@ import kotlinx.serialization.encoding.Encoder
 object NavigationConfigSerializer : KSerializer<NavigationConfig> {
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("NavigationConfig")
     
+    /**
+     * Serializes a NavigationConfig to a compact string form for encoding.
+     *
+     * Produces "home" for NavigationConfig.Home and "detail:<countryId>" for NavigationConfig.CountryDetail.
+     *
+     * @param value The NavigationConfig instance to serialize.
+     */
     override fun serialize(encoder: Encoder, value: NavigationConfig) {
         when (value) {
             is NavigationConfig.Home -> encoder.encodeString("home")
@@ -20,6 +27,12 @@ object NavigationConfigSerializer : KSerializer<NavigationConfig> {
         }
     }
     
+    /**
+     * Deserializes a string-encoded NavigationConfig from the provided decoder.
+     *
+     * @param decoder The decoder to read the string representation from.
+     * @return `NavigationConfig.Home` when the decoded string is `"home"` or when the value is unrecognized; `NavigationConfig.CountryDetail(countryId)` when the decoded string has the form `"detail:<countryId>"`.
+     */
     override fun deserialize(decoder: Decoder): NavigationConfig {
         val string = decoder.decodeString()
         return when {
@@ -32,4 +45,3 @@ object NavigationConfigSerializer : KSerializer<NavigationConfig> {
         }
     }
 }
-

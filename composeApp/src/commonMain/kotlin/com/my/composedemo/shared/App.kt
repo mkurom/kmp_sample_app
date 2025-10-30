@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
 import com.my.composedemo.shared.domain.model.Theme
 import com.my.composedemo.shared.presentation.viewmodel.AppViewModel
@@ -17,13 +16,8 @@ import com.my.composedemo.shared.presentation.ui.screen.CountryDetailScreen
 import com.my.composedemo.shared.presentation.navigation.BottomNavigationBar
 import com.my.composedemo.shared.presentation.navigation.RootComponent
 import com.my.composedemo.shared.presentation.navigation.ChildComponent
-import com.arkivanov.decompose.router.stack.ChildStack
-import com.arkivanov.decompose.router.stack.childStack
-import com.arkivanov.decompose.router.stack.active
-import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.essenty.lifecycle.destroy
 import com.arkivanov.essenty.lifecycle.resume

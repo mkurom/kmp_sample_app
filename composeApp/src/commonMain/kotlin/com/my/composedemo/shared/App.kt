@@ -35,6 +35,11 @@ import org.koin.compose.koinInject
  * Home画面のナビゲーション管理関数
  * Decomposeを使用してプラットフォーム共通で実装
  */
+/**
+ * Hosts the Home feature's navigation and displays the currently active child screen.
+ *
+ * Renders either the Home screen or a country detail screen according to the navigation stack, supplying the appropriate view model and callbacks to the active child.
+ */
 @Composable
 fun HomeScreenWithNavigation() {
     val homeViewModel: HomeViewModel = koinInject()
@@ -67,7 +72,13 @@ fun HomeScreenWithNavigation() {
     }
 }
 
-// メインのApp関数
+/**
+ * Root composable for the application that applies theming and hosts the bottom navigation layout.
+ *
+ * Renders MaterialTheme based on the app's Theme state from AppViewModel, shows a bottom navigation bar
+ * with Home, Search, Profile, and Settings tabs, and displays the corresponding screen for the selected tab
+ * (HOME uses HomeScreenWithNavigation; SEARCH, PROFILE, and SETTINGS render their respective screens).
+ */
 @Composable
 @Preview
 fun App() {

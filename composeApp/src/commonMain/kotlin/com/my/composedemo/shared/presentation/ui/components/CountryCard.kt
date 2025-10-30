@@ -14,6 +14,13 @@ import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
 import com.my.composedemo.shared.domain.model.Country
 
+/**
+ * Displays a clickable card showing a country's image, name, and a time string.
+ *
+ * @param country The country model whose `image` is shown and whose `name` is used as the title and image content description.
+ * @param currentTime Text displayed below the country name.
+ * @param onClick Callback invoked when the card is clicked.
+ */
 @Composable
 fun CountryCard(
     country: Country,
@@ -54,4 +61,3 @@ fun CountryCard(
         }
     }
 }
-

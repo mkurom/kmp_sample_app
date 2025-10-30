@@ -29,6 +29,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.androidx.navigation.compose)
             implementation("com.google.android.gms:play-services-maps:18.2.0")
             implementation("com.google.maps.android:maps-compose:4.3.0")
         }
@@ -44,6 +45,9 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+            implementation(libs.decompose)
+            implementation("com.arkivanov.decompose:extensions-compose:3.0.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

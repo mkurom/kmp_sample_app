@@ -1,6 +1,7 @@
 package com.my.composedemo.shared.presentation.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -11,15 +12,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.jetbrains.compose.resources.painterResource
-import com.my.composedemo.shared.presentation.ui.model.Country
-import com.my.composedemo.shared.presentation.ui.model.currentTimeAt
+import com.my.composedemo.shared.domain.model.Country
 
 @Composable
-fun CountryCard(country: Country) {
+fun CountryCard(
+    country: Country,
+    currentTime: String,
+    onClick: () -> Unit = {}
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp),
+            .padding(vertical = 4.dp)
+            .clickable(onClick = onClick),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(
@@ -41,7 +46,7 @@ fun CountryCard(country: Country) {
                     fontWeight = FontWeight.Medium
                 )
                 Text(
-                    text = currentTimeAt(country.name, country.zone),
+                    text = currentTime,
                     fontSize = 12.sp,
                     color = Color.Gray
                 )
